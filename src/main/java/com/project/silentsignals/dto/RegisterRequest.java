@@ -24,8 +24,6 @@ public class RegisterRequest {
     @Email(message = "Email should be valid")
     private String email;
 
-    @NotNull(message = "Role type cannot be null")
-    private RoleType roleType;
 
     @NotBlank(message = "Phone number cannot be blank")
     @Pattern(regexp = "\\+?[0-9]{10,15}", message = "Phone number should be valid")

@@ -43,8 +43,7 @@ public class SecurityConfig {
 
                 })).authorizeHttpRequests(auth -> auth
                         .requestMatchers("/public/*").permitAll()
-                        .requestMatchers("/user/*").hasRole("USER")
-                        .requestMatchers("/contact/*").hasRole("CONTACT").anyRequest().authenticated()
+                        .requestMatchers("/user/*").hasRole("USER").anyRequest().authenticated()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).authenticationProvider(authenticationProvider).addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();

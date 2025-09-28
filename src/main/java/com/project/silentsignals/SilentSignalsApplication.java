@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EnableJpaRepositories
 @ComponentScan("com.project")
-@EntityScan
+@EntityScan("com.project")
 public class SilentSignalsApplication {
 
     public static void main(String[] args) {
