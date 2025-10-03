@@ -1,4 +1,4 @@
-package com.project.silentsignals.role;
+package com.project.silentsignals.enums;
 
 public enum RoleType {
     USER, CONTACT

@@ -1,6 +1,5 @@
 package com.project.silentsignals.dto;
 
-import com.project.silentsignals.role.RoleType;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,7 +1,6 @@
 package com.project.silentsignals.security;
 
 import com.project.silentsignals.entity.User;
-import com.project.silentsignals.role.RoleType;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
