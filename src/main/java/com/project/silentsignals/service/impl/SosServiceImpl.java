@@ -14,7 +14,6 @@ import com.project.silentsignals.repository.NotificationLogRepository;
 import com.project.silentsignals.repository.SosAlertRepository;
 import com.project.silentsignals.repository.UserRepository;
 import com.project.silentsignals.service.ISosService;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.JobDetail;
@@ -24,6 +23,7 @@ import org.quartz.Trigger;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
