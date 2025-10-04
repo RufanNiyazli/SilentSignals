@@ -5,27 +5,28 @@ import com.project.silentsignals.scheduler.SosEscalationJob;
 import org.quartz.*;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Date;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 @Configuration
 public class QuartzConfig {
-    public static JobDetail buildJobDetail(Long alertId, String sosSessionId) {
-        JobDataMap jobDataMap = new JobDataMap();
-        jobDataMap.put("alertId", alertId);
-        jobDataMap.put("sosSessionId", sosSessionId);
+
+    public static JobDetail buildJobDetail(Long alertId) {
         return JobBuilder.newJob(SosEscalationJob.class)
-                .withIdentity(UUID.randomUUID().toString(), "sos-jobs")
+                .withIdentity("sosEscalationJob_" + alertId, "sos-jobs")
                 .withDescription("SOS Escalation Job")
-                .usingJobData(jobDataMap)
+                .usingJobData("alertId", alertId)
                 .storeDurably()
                 .build();
     }
-    public static Trigger buildJobTrigger(JobDetail jobDetail,int delayInSeconds){
+
+    public static Trigger buildJobTrigger(JobDetail jobDetail, int delayMinutes) {
         return TriggerBuilder.newTrigger()
                 .forJob(jobDetail)
-                .withIdentity(jobDetail.getKey().getName(),"sos-triggers")
+                .withIdentity(jobDetail.getKey().getName(), "sos-triggers")
                 .withDescription("SOS Escalation Trigger")
-                .startAt(DateBuilder.futureDate(delayInSeconds,DateBuilder.IntervalUnit.SECOND))
+                .startAt(new Date(System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(delayMinutes)))
                 .withSchedule(SimpleScheduleBuilder.simpleSchedule().withMisfireHandlingInstructionFireNow())
                 .build();
     }
