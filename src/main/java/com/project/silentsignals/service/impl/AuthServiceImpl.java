@@ -39,7 +39,7 @@ public class AuthServiceImpl implements IAuthService {
         User user = User.builder()
                 .email(registerRequest.getEmail())
                 .phoneNumber(registerRequest.getPhoneNumber())
-                .username(registerRequest.getPhoneNumber())
+                .username(registerRequest.getUsername())
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
 
                 .build();
@@ -59,6 +59,7 @@ public class AuthServiceImpl implements IAuthService {
         User user = userRepository.findUserByEmail(loginRequest.getEmail()).orElseThrow(() -> new RuntimeException("EMail not found!"));
         String accessToken = jwtService.generateToken(user);
         RefreshToken refreshToken = refreshTokenService.createRefreshToken(user);
+        refreshTokenRepository.save(refreshToken);
 
 
         return new AuthResponse(accessToken, refreshToken.getToken());

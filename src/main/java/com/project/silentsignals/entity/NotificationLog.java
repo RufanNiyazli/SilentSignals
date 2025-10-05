@@ -1,4 +1,3 @@
-// --- path: com/project/silentsignals/entity/NotificationLog.java ---
 package com.project.silentsignals.entity;
 
 import com.project.silentsignals.enums.Channel;
@@ -24,7 +23,7 @@ public class NotificationLog {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "contact_id")
-    private User contact; // Bildiriş göndərilən istifadəçi
+    private User contact;
 
     @Enumerated(EnumType.STRING)
     private Channel channel;

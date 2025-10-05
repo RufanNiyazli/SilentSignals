@@ -28,16 +28,19 @@ public class User implements UserDetails {
     private String email;
     private RoleType roleType = RoleType.USER;
     private String phoneNumber;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private List<RefreshToken> refreshToken;
 
-
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private Set<Contact> contacts = new HashSet<>();
 
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private List<SosAlert> sosAlerts;
 
@@ -50,6 +53,4 @@ public class User implements UserDetails {
     public String getUsername() {
         return email;
     }
-
-
 }

@@ -1,9 +1,9 @@
-// --- path: com/project/silentsignals/entity/SosAlert.java ---
 package com.project.silentsignals.entity;
 
 import com.project.silentsignals.enums.AlertStatus;
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -17,7 +17,6 @@ public class SosAlert {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Double latitude;
     private Double longitude;
 
