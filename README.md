@@ -457,6 +457,50 @@ stompClient.connect({}, function(frame) {
   });
 });
 ```
+Əla! Mən bunu sənə **README.md** formatında hazırlayacam, `.env.example`-in necə istifadə olunacağını da göstərəcək.
+
+````markdown
+# Project Environment Setup
+
+This project requires environment variables to be configured in a `.env` file. For security reasons, sensitive information such as passwords, API keys, and JWT secrets should **never** be committed to version control. Use `.env.example` as a template.
+
+## 1. Create `.env` file
+
+Copy the example file:
+
+```bash
+cp .env.example .env
+````
+
+
+
+## 2. Example `.env` configuration
+
+
+
+```env
+# Database configuration
+SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/your_database
+SPRING_DATASOURCE_USERNAME=your_username
+SPRING_DATASOURCE_PASSWORD=your_password
+SPRING_JPA_PROPERTIES_HIBERNATE_DEFAULT_SCHEMA=your_schema
+
+# JWT configuration
+JWT_SECRET=your_jwt_secret_key
+
+# CORS configuration
+CORS_LINK=http://your_frontend_host:port
+
+# Resend API (email service)
+RESEND_API_KEY=your_resend_api_key
+RESEND_EMAIL_FROM=your_email@example.com
+
+# Spring Mail configuration
+SPRING_MAIL_PASSWORD=your_email_password
+```
+
+
+
 
 ## Future Enhancements
 
@@ -489,3 +533,4 @@ For questions or support, please contact: developerx73@gmail.com
 ---
 
 **Note**: This is an emergency alert system. Ensure proper testing in non-production environments before deploying to production. Always comply with local regulations regarding emergency notification systems.
+
